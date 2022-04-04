@@ -51,3 +51,10 @@ MVC ( Model-View-Controller )
 <h2> Real test with Postman </h2>
 
 https://documenter.getpostman.com/view/20045494/UVysxvVt
+
+<h2> References </h2>
+
+Flask: https://flask.palletsprojects.com/en/2.1.x/
+SQLAlchemy: https://docs.sqlalchemy.org/en/14/
+MVC: https://edisciplinas.usp.br/pluginfile.php/4632609/mod_resource/content/1/5%20Arquitetura%20MVC.pdf
+Schematics: https://schematics.readthedocs.io/en/latest/basics/quickstart.html
