@@ -1,0 +1,2 @@
+
+DEFAULT_MAX_NUMBER = 2
