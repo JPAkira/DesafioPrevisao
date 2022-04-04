@@ -6,6 +6,12 @@ Challenge to build an api with flask to export the weather forecast
 
 # Setup
 
+<h2> Requirements </h2>
+
+```
+Python 3.X
+```
+
 ```
 python -m venv .venv
 ```
