@@ -7,8 +7,9 @@ from cache import cache
 class FlaskTestCase(unittest.TestCase):
     def test_temperature_city(self):
         db.init_app(app)
+        cache.init_app(app)
         tester = app.test_client(self)
-        response = tester.get("/temperature/Pinhais")
+        response = tester.get("/temperature/london")
         statuscode = response.status_code
         self.assertEqual(statuscode, 201)
 
@@ -23,25 +24,10 @@ class FlaskTestCase(unittest.TestCase):
         db.init_app(app)
         cache.init_app(app)
         tester = app.test_client(self)
-        response1 = tester.get("/temperature/Curitiba")
+        response1 = tester.get("/temperature/london")
         last_response = tester.get("/temperature?max=1")
 
         self.assertEqual(last_response.status_code, 201)
     
-    def create_object(self):
-        from Previsao.schemas.weather import WeatherReport
-        json = {
-            "temp_min": "25.00",
-            "temp_max": "25.00",
-            "avg": "25.00",
-            "feels_like": "25.00",
-            "city_name": "Curitiba",
-            "country": "BRA"
-        }
-        item = WeatherReport(**json)
-        valid = item.validate()
-
-        self.assertEqual(valid, True)
-
 if __name__ == "__main__":
     unittest.main()

@@ -4,16 +4,25 @@ from Previsao.models.main import Weather
 from config import DEFAULT_MAX_NUMBER
 from flask import request
 from cache import cache
+import requests
+import json
 
 
 class WeatherResource(Resource):
     def get(self, city_name):
         json_return = ''
         try:
-            query = Weather.find_by_city(city_name)
-            if query:
-                itens = {'weathers': list(map(lambda x: x.json(), query))}
-                schema = Collection(itens)
+            result = requests.get(f'https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid=bdef6a1e5b48093bae9791b818f797f7')
+            result_json = json.loads(result.text)
+            if result_json:
+                schema = WeatherReport()
+                schema.temp_min = round(result_json['main']['temp_min'] - 273, 2)
+                schema.temp_max = round(result_json['main']['temp_max'] - 273, 2)
+                schema.avg = round(result_json['main']['temp'] - 273, 2)
+                schema.feels_like = round(result_json['main']['feels_like'] - 273, 2)
+                schema.city_name = result_json['name']
+                schema.country = result_json['sys']['country']
+                
                 json_return = schema.to_primitive()
                 cities = cache.get("cities")
                 if not cities:
