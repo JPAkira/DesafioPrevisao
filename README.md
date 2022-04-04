@@ -4,7 +4,7 @@
 
 Challenge to build an api with flask to export the weather forecast
 
-# Install
+# Setup
 
 ```
 python -m venv .venv
