@@ -30,7 +30,7 @@ python tests.py
 
 # Architecture
 
-MVC
+MVC ( Model-View-Controller )
 
 <h2>Code structure</h2>
 
@@ -48,3 +48,6 @@ MVC
 └── test.py
 ```
 
+<h2> Real test with Postman </h2>
+
+https://documenter.getpostman.com/view/20045494/UVysxvVt
