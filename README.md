@@ -33,6 +33,7 @@ python tests.py
 MVC
 
 <h2>Code structure</h2>
+
 ```
 ├── application
 ├── Previsao
